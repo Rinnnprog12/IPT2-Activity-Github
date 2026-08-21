@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #FFFAF2;
+            color: #171B18;
+            font-family: Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .wrap {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 40px 32px 80px;
+        }
+
+        h1.title {
+            font-weight: 500;
+            font-size: 34px;
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+            margin: 0 0 8px;
+        }
+
+        .title-rule {
+            width: 56px;
+            height: 3px;
+            background: #A3390B;
+            margin: 16px 0 44px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: stretch;
+        }
+
+        @media (max-width: 860px) {
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+        }
+
+        .info-col,
+        .panel {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .eyebrow {
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #A3390B;
+            margin-bottom: 14px;
+        }
+
+        h2.qtitle,
+        h2.form-title {
+            font-weight: 500;
+            font-size: 22px;
+            margin: 0 0 14px;
+        }
+
+        .lede,
+        .form-lede {
+            color: #6B7168;
+            line-height: 1.6;
+            margin: 0 0 24px;
+        }
+
+        .lede {
+            font-size: 14.5px;
+            max-width: 42ch;
+        }
+
+        .form-lede {
+            font-size: 13.5px;
+        }
+
+        .contact-image {
+            width: 100%;
+            max-width: 350px;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 32px;
+            display: block;
+        }
+
+        .contact-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            margin-top: auto;
+        }
+
+        .contact-list li {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            padding: 20px 0;
+            border-top: 1px solid #E6E0D2;
+        }
+
+        .contact-list li:first-child {
+            border-top: none;
+        }
+
+        .icon-node {
+            flex: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #F3E1D6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #A3390B;
+        }
+
+        .contact-label,
+        label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #6B7168;
+        }
+
+        .contact-label {
+            margin-bottom: 4px;
+        }
+
+        .contact-value {
+            font-size: 15.5px;
+            font-weight: 500;
+            line-height: 1.45;
+        }
+
+        .panel {
+            background: #FFFFFF;
+            border: 1px solid #E6E0D2;
+            border-radius: 4px;
+            padding: 36px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .panel::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #A3390B;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 500px) {
+            .row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        label {
+            display: block;
+            font-size: 10px;
+            margin-bottom: 6px;
+        }
+
+        .field {
+            margin-bottom: 18px;
+        }
+
+        .field.message-field {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            border: 1px solid #E6E0D2;
+            background: #FDFCF8;
+            border-radius: 3px;
+            padding: 12px 14px;
+            font-size: 14px;
+            color: #171B18;
+            transition: border-color .15s ease, box-shadow .15s ease;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #A5A99C;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #A3390B;
+            box-shadow: 0 0 0 3px #F3E1D6;
+        }
+
+        textarea {
+            min-height: 120px;
+            flex: 1;
+            resize: vertical;
+        }
+
+        .submit {
+            appearance: none;
+            border: none;
+            background: #A3390B;
+            color: #fff;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 13px 26px;
+            border-radius: 3px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            align-self: flex-start;
+            margin-top: 20px;
+            transition: background .15s ease;
+        }
+
+        .submit:hover {
+            background: #8A2F09;
+        }
+    </style>
+
+    <style>
+        body {
+            margin: 0;
+            background-color: #fffaf2;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #7a6a5c;
+        }
+
+        nav {
+            background-color: #a3390b;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid;
+
+        }
+
+        nav a {
+            display: inline-block;
+            color: #fffaf2;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+            color: #ffd8c2;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #a3390b;
+            color: #fffaf2;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <nav>
+        <a href="Ibe.html">Home</a>
+        <a href="DelaPena.html">About</a>
+        <a href="Lansangan.html">Contact Us</a>
+        <a href="Laoang.html">Log In</a>
+        <a href="Dolor.html">Dashboard</a>
+    </nav>
+
+    <footer>
+        <p>&copy; 2026 Kitchen Recipes. All Rights Reserved.</p>
+    </footer>
+
+    <div class="wrap">
+
+        <h1 class="title">Contact Us</h1>
+        <div class="title-rule"></div>
+
+        <div class="grid">
+
+            <div class="info-col">
+                <div class="eyebrow">KITCHEN RECIPE</div>
+                <h2 class="qtitle">Need more information?<br>Let's talk it through.</h2>
+                <p class="lede">Got a question about a recipe, a suggestion, or just want to talk food? Send us a
+                    message — we reply fast, like chatting with a neighbor. Lutong Pinoy!🍚</p>
+
+                <img src="/q.jpg" alt="Description of image" class="contact-image">
+
+                <ul class="contact-list">
+                    <li>
+                        <div class="icon-node">📞</div>
+                        <div>
+                            <div class="contact-label">Phone Number</div>
+                            <div class="contact-value">+63 912 345 6789</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-node">✉️</div>
+                        <div>
+                            <div class="contact-label">Email</div>
+                            <div class="contact-value">kitchenrecipe@gmail.com</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="icon-node">📍</div>
+                        <div>
+                            <div class="contact-label">Address</div>
+                            <div class="contact-value">Encantadia, Biringan City, blk 123, Kanya-Kanya na Street</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="panel">
+                <h2 class="form-title">Send a Message</h2>
+                <p class="form-lede">Fill out the form below with your details and message, we'll get back to you
+                    shortly.</p>
+
+                <form onsubmit="event.preventDefault(); alert('Thanks — your message has been sent.');">
+                    <div class="row">
+                        <div class="field">
+                            <label for="fname">First Name</label>
+                            <input id="fname" type="text" placeholder="Kween" required>
+                        </div>
+                        <div class="field">
+                            <label for="lname">Last Name</label>
+                            <input id="lname" type="text" placeholder="Leng-Leng" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="contact">Email or Phone Number</label>
+                        <input id="contact" type="text" placeholder="kweenlengleng@gmail.com" required>
+                    </div>
+
+                    <div class="field message-field">
+                        <label for="message">Message</label>
+                        <textarea id="message" placeholder="Write your message here..." required></textarea>
+                    </div>
+
+                    <button class="submit" type="submit">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
