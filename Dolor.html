@@ -1,238 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard — Kitchen Recipes</title>
-<style>
-  :root{
-    --pine:#52734d;
-    --pine-soft:#6a8d63;
-    --paper:#fbf3e7;
-    --card:#fffaf2;
-    --ink:#3b2a20;
-    --ink-soft:#7a6a5c;
-    --mustard:#c1440e;
-    --mustard-deep:#a3390b;
-    --brick:#a3390b;
-    --line:#e6d8c6;
-    --shadow: 0 10px 24px -14px rgba(59,42,32,0.25);
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Kitchen Recipes</title>
+  <style>
+    :root {
+      --pine: #52734d;
+      --pine-soft: #6a8d63;
+      --paper: #fbf3e7;
+      --card: #fffaf2;
+      --ink: #3b2a20;
+      --ink-soft: #7a6a5c;
+      --mustard: #c1440e;
+      --mustard-deep: #a3390b;
+      --brick: #a3390b;
+      --line: #e6d8c6;
+      --shadow: 0 10px 24px -14px rgba(59, 42, 32, 0.25);
+    }
 
-  *{box-sizing:border-box;}
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:Arial, sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3{
-    font-family:Arial, "Times New Roman", serif;
-    font-weight:700;
-    letter-spacing:-0.01em;
-    margin:0;
-  }
-  a{color:inherit;text-decoration:none;}
+    * {
+      box-sizing: border-box;
+    }
 
-  .page-head{
-    max-width:1180px;
-    margin:0 auto;
-    padding:40px 32px 0;
-  }
-  .eyebrow{
-    font-family:Arial, sans-serif;
-    font-size:12px;
-    color:var(--brick);
-    text-transform:uppercase;
-    letter-spacing:0.14em;
-    margin-bottom:10px;
-  }
-  .page-head h1{font-size:32px;}
-  .page-head p{
-    color:var(--ink-soft);
-    font-size:14px;
-    margin-top:6px;
-    max-width:50ch;
-  }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  main{
-    max-width:1180px;
-    margin:0 auto;
-    padding:28px 32px 72px;
-  }
-  .dashboard{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:4px;
-    padding:36px 32px 44px;
-  }
-  .dash-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:14px;
-    margin-bottom:28px;
-  }
-  .dash-top .tag{
-    font-family:Arial, sans-serif;
-    font-size:11px;
-    color:var(--paper);
-    background:var(--pine);
-    padding:5px 10px;
-    border-radius:2px;
-    letter-spacing:0.08em;
-  }
-  .stat-row{
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    gap:18px;
-    margin-bottom:36px;
-  }
-  .stat-card{
-    background:var(--paper);
-    border:1px dashed var(--line);
-    border-radius:2px;
-    padding:18px 16px 16px;
-    position:relative;
-    transition:transform .18s ease, box-shadow .18s ease;
-  }
-  .stat-card:nth-child(1){transform:rotate(-1.4deg);}
-  .stat-card:nth-child(2){transform:rotate(0.8deg);}
-  .stat-card:nth-child(3){transform:rotate(-0.6deg);}
-  .stat-card:nth-child(4){transform:rotate(1.2deg);}
-  .stat-card:hover{
-    transform:rotate(0deg) translateY(-3px);
-    box-shadow:var(--shadow);
-  }
-  .stat-card::before{
-    content:"";
-    position:absolute;
-    top:-6px; left:16px;
-    width:11px;height:11px;
-    border-radius:50%;
-    background:var(--card);
-    border:1.5px solid var(--line);
-  }
-  .stat-card .num{
-    font-family:Arial, sans-serif;
-    font-size:30px;
-    font-weight:600;
-    color:var(--pine);
-  }
-  .stat-card .num span{
-    font-size:15px;
-    color:var(--mustard-deep);
-  }
-  .stat-card .cap{
-    font-size:12.5px;
-    color:var(--ink-soft);
-    margin-top:4px;
-  }
+    h1,
+    h2,
+    h3 {
+      font-family: Arial, "Times New Roman", serif;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
 
-  .dash-grid{
-    display:grid;
-    grid-template-columns:1.3fr 1fr;
-    gap:24px;
-    margin-bottom:24px;
-  }
-  .panel{
-    border:1px solid var(--line);
-    border-radius:3px;
-    padding:20px;
-    background:var(--paper);
-  }
-  .panel h4{
-    font-family:Arial, sans-serif;
-    font-size:16px;
-    margin-bottom:14px;
-    display:flex;
-    align-items:center;
-    gap:8px;
-  }
-  .panel h4::before{
-    content:"";
-    width:7px;height:7px;
-    background:var(--brick);
-    border-radius:50%;
-    display:inline-block;
-  }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-  .bar-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;}
-  .bar-row{display:flex;justify-content:space-between;margin-bottom:5px;color:var(--ink-soft);font-size:13px;}
-  .bar-track{height:7px;background:var(--line);border-radius:6px;overflow:hidden;}
-  .bar-fill{height:100%;background:var(--mustard);border-radius:6px;}
-  .bar-fill.brick{background:var(--brick);}
-  .bar-fill.pine{background:var(--pine-soft);}
+    .page-head {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 40px 32px 0;
+    }
 
-  .activity-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
-  .activity-list li{
-    display:flex;
-    gap:12px;
-    font-size:13px;
-    padding-bottom:12px;
-    border-bottom:1px dashed var(--line);
-  }
-  .activity-list li:last-child{border-bottom:none;padding-bottom:0;}
-  .act-dot{
-    width:8px;height:8px;border-radius:50%;
-    background:var(--mustard);
-    margin-top:5px;
-    flex-shrink:0;
-  }
-  .act-dot.new{background:var(--brick);}
-  .act-time{color:var(--ink-soft);font-size:11.5px;font-family:Arial, sans-serif;}
+    .eyebrow {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      color: var(--brick);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 10px;
+    }
 
-  .panel-table{
-    border:1px solid var(--line);
-    border-radius:3px;
-    padding:20px;
-    background:var(--paper);
-  }
-  table{width:100%;border-collapse:collapse;font-size:13px;}
-  thead th{
-    text-align:left;
-    font-family:Arial, sans-serif;
-    font-size:11px;
-    text-transform:uppercase;
-    letter-spacing:0.06em;
-    color:var(--ink-soft);
-    padding:0 10px 10px;
-    border-bottom:1px solid var(--line);
-  }
-  tbody td{
-    padding:12px 10px;
-    border-bottom:1px dashed var(--line);
-  }
-  tbody tr:last-child td{border-bottom:none;}
-  .pill{
-    font-family:Arial, sans-serif;
-    font-size:11px;
-    padding:3px 9px;
-    border-radius:20px;
-  }
-  .pill.mains{background:#F2E4CC;color:var(--mustard-deep);}
-  .pill.soup{background:#F1D9D2;color:var(--brick);}
-  .pill.merienda{background:#DCE6DE;color:var(--pine-soft);}
-  .row-actions a{
-    font-size:12px;
-    color:var(--brick);
-    margin-right:10px;
-  }
+    .page-head h1 {
+      font-size: 32px;
+    }
 
-  @media (max-width:900px){
-    .stat-row{grid-template-columns:repeat(2,1fr);}
-    .dash-grid{grid-template-columns:1fr;}
-    .topnav{display:none;}
-  }
-  @media (max-width:560px){
-    .stat-row{grid-template-columns:1fr 1fr;}
-    table{font-size:12px;}
-  }
-</style>
+    .page-head p {
+      color: var(--ink-soft);
+      font-size: 14px;
+      margin-top: 6px;
+      max-width: 50ch;
+    }
+
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 32px 72px;
+    }
+
+    .dashboard {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 36px 32px 44px;
+    }
+
+    .dash-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .dash-top .tag {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      color: var(--paper);
+      background: var(--pine);
+      padding: 5px 10px;
+      border-radius: 2px;
+      letter-spacing: 0.08em;
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 36px;
+    }
+
+    .stat-card {
+      background: var(--paper);
+      border: 1px dashed var(--line);
+      border-radius: 2px;
+      padding: 18px 16px 16px;
+      position: relative;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .stat-card:nth-child(1) {
+      transform: rotate(-1.4deg);
+    }
+
+    .stat-card:nth-child(2) {
+      transform: rotate(0.8deg);
+    }
+
+    .stat-card:nth-child(3) {
+      transform: rotate(-0.6deg);
+    }
+
+    .stat-card:nth-child(4) {
+      transform: rotate(1.2deg);
+    }
+
+    .stat-card:hover {
+      transform: rotate(0deg) translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .stat-card::before {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: 16px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--card);
+      border: 1.5px solid var(--line);
+    }
+
+    .stat-card .num {
+      font-family: Arial, sans-serif;
+      font-size: 30px;
+      font-weight: 600;
+      color: var(--pine);
+    }
+
+    .stat-card .num span {
+      font-size: 15px;
+      color: var(--mustard-deep);
+    }
+
+    .stat-card .cap {
+      font-size: 12.5px;
+      color: var(--ink-soft);
+      margin-top: 4px;
+    }
+
+    .dash-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 20px;
+      background: var(--paper);
+    }
+
+    .panel h4 {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .panel h4::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: var(--brick);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .bar-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .bar-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+      color: var(--ink-soft);
+      font-size: 13px;
+    }
+
+    .bar-track {
+      height: 7px;
+      background: var(--line);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: var(--mustard);
+      border-radius: 6px;
+    }
+
+    .bar-fill.brick {
+      background: var(--brick);
+    }
+
+    .bar-fill.pine {
+      background: var(--pine-soft);
+    }
+
+    .activity-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .activity-list li {
+      display: flex;
+      gap: 12px;
+      font-size: 13px;
+      padding-bottom: 12px;
+      border-bottom: 1px dashed var(--line);
+    }
+
+    .activity-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .act-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--mustard);
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .act-dot.new {
+      background: var(--brick);
+    }
+
+    .act-time {
+      color: var(--ink-soft);
+      font-size: 11.5px;
+      font-family: Arial, sans-serif;
+    }
+
+    .panel-table {
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 20px;
+      background: var(--paper);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    thead th {
+      text-align: left;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ink-soft);
+      padding: 0 10px 10px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    tbody td {
+      padding: 12px 10px;
+      border-bottom: 1px dashed var(--line);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .pill {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 20px;
+    }
+
+    .pill.mains {
+      background: #F2E4CC;
+      color: var(--mustard-deep);
+    }
+
+    .pill.soup {
+      background: #F1D9D2;
+      color: var(--brick);
+    }
+
+    .pill.merienda {
+      background: #DCE6DE;
+      color: var(--pine-soft);
+    }
+
+    .row-actions a {
+      font-size: 12px;
+      color: var(--brick);
+      margin-right: 10px;
+    }
+
+    nav {
+      background-color: #a3390b;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid;
+
+    }
+
+    nav a {
+      display: inline-block;
+      color: #fffaf2;
+      text-decoration: none;
+      margin: 0 20px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      color: #ffd8c2;
+    }
+
+    main {
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer {
+      background-color: #a3390b;
+      color: #fffaf2;
+      text-align: center;
+      padding: 20px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    @media (max-width:900px) {
+      .stat-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .dash-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topnav {
+        display: none;
+      }
+    }
+
+    @media (max-width:560px) {
+      .stat-row {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      table {
+        font-size: 12px;
+      }
+    }
+  </style>
 </head>
+
 <body>
+
+  <nav>
+    <a href="Ibe.html">Home</a>
+    <a href="DelaPena.html">About</a>
+    <a href="Lansangan.html">Contact Us</a>
+    <a href="Laoang.html">Log In</a>
+    <a href="Dolor.html">Dashboard</a>
+  </nav>
 
   <div class="page-head">
     <div class="eyebrow">Kitchen Overview</div>
@@ -243,7 +429,8 @@
   <main>
     <div class="dashboard">
       <div class="dash-top">
-        <span class="mono" style="font-family:Arial, sans-serif; font-size:12px;color:var(--ink-soft);">Last updated — Aug 21, 2026</span>
+        <span class="mono" style="font-family:Arial, sans-serif; font-size:12px;color:var(--ink-soft);">Last updated —
+          Aug 21, 2026</span>
         <span class="tag">LIVE</span>
       </div>
 
@@ -272,23 +459,33 @@
           <ul class="bar-list">
             <li>
               <div class="bar-row"><span>Mains</span><span>12</span></div>
-              <div class="bar-track"><div class="bar-fill" style="width:80%"></div></div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:80%"></div>
+              </div>
             </li>
             <li>
               <div class="bar-row"><span>Soups &amp; Stews</span><span>8</span></div>
-              <div class="bar-track"><div class="bar-fill brick" style="width:55%"></div></div>
+              <div class="bar-track">
+                <div class="bar-fill brick" style="width:55%"></div>
+              </div>
             </li>
             <li>
               <div class="bar-row"><span>Merienda</span><span>6</span></div>
-              <div class="bar-track"><div class="bar-fill pine" style="width:40%"></div></div>
+              <div class="bar-track">
+                <div class="bar-fill pine" style="width:40%"></div>
+              </div>
             </li>
             <li>
               <div class="bar-row"><span>Rice &amp; Noodles</span><span>4</span></div>
-              <div class="bar-track"><div class="bar-fill" style="width:26%"></div></div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:26%"></div>
+              </div>
             </li>
             <li>
               <div class="bar-row"><span>Desserts</span><span>2</span></div>
-              <div class="bar-track"><div class="bar-fill brick" style="width:14%"></div></div>
+              <div class="bar-track">
+                <div class="bar-fill brick" style="width:14%"></div>
+              </div>
             </li>
           </ul>
         </div>
@@ -381,5 +578,9 @@
       </div>
     </div>
   </main>
+  <footer>
+    <p>&copy; 2026 Kitchen Recipes. All Rights Reserved.</p>
+  </footer>
 </body>
+
 </html>
