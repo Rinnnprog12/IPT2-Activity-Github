@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Home — Kitchen Recipes</title>
+
+  <style>
+    :root {
+      --pine: #52734d;
+      --pine-soft: #6a8d63;
+      --paper: #fbf3e7;
+      --card: #fffaf2;
+      --ink: #3b2a20;
+      --ink-soft: #7a6a5c;
+      --brick: #a3390b;
+      --brick-light: #c1440e;
+      --line: #e6d8c6;
+      --shadow: 0 14px 30px -18px rgba(59, 42, 32, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    nav {
+      background-color: #a3390b;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid;
+    }
+
+    nav a {
+      display: inline-block;
+      color: #fffaf2;
+      text-decoration: none;
+      margin: 0 20px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      color: #ffd8c2;
+    }
+
+
+    .hero {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 75px 32px 60px;
+
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 55px;
+
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--brick);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 13px;
+    }
+
+    .hero h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(45px, 6vw, 76px);
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span {
+      color: var(--pine);
+    }
+
+    .hero p {
+      color: var(--ink-soft);
+      font-size: 17px;
+      max-width: 560px;
+      margin-bottom: 30px;
+    }
+
+    /* BUTTONS */
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 21px;
+      border-radius: 3px;
+      font-size: 13px;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--brick);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--brick-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--pine);
+      color: var(--pine);
+      background: transparent;
+    }
+
+    .btn-secondary:hover {
+      background: var(--pine);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+
+    .hero-card {
+      min-height: 420px;
+      background: var(--card);
+
+      border: 1px solid var(--line);
+      padding: 18px;
+
+      position: relative;
+
+      box-shadow: var(--shadow);
+
+      transform: rotate(1.3deg);
+
+      transition: 0.3s ease;
+    }
+
+    .hero-card:hover {
+      transform: rotate(0deg) translateY(-5px);
+    }
+
+    .hero-card::before {
+      content: "";
+
+      position: absolute;
+
+      top: -8px;
+      left: 28px;
+
+      width: 12px;
+      height: 12px;
+
+      border-radius: 50%;
+
+      background: var(--card);
+
+      border: 1.5px solid var(--line);
+    }
+
+    .food-photo {
+      width: 100%;
+      height: 275px;
+
+      border: 1px solid var(--line);
+
+      overflow: hidden;
+
+      background: #ead6b9;
+    }
+
+    .food-photo img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      display: block;
+
+      transition: transform 0.5s ease;
+    }
+
+    .hero-card:hover .food-photo img {
+      transform: scale(1.04);
+    }
+
+    .recipe-note {
+      padding: 17px 5px 3px;
+    }
+
+    .recipe-note small {
+      color: var(--brick);
+
+      text-transform: uppercase;
+
+      letter-spacing: 0.12em;
+
+      font-size: 10px;
+
+      font-weight: bold;
+    }
+
+    .recipe-note h3 {
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size: 26px;
+
+      margin-top: 2px;
+    }
+
+    .recipe-note p {
+      font-size: 12px;
+
+      color: var(--ink-soft);
+
+      margin-top: 2px;
+    }
+
+
+    .section {
+      max-width: 1180px;
+
+      margin: 0 auto;
+
+      padding: 30px 32px 80px;
+    }
+
+    .section-heading {
+      text-align: center;
+
+      margin-bottom: 32px;
+    }
+
+    .section-heading .eyebrow {
+      margin-bottom: 5px;
+    }
+
+    .section-heading h2 {
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size: 38px;
+    }
+
+    .section-heading p {
+      color: var(--ink-soft);
+
+      font-size: 14px;
+
+      max-width: 620px;
+
+      margin: 7px auto 0;
+    }
+
+    .category-grid {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 20px;
+    }
+
+    .category {
+      background: var(--card);
+
+      border: 1px solid var(--line);
+
+      overflow: hidden;
+
+      transition: 0.25s ease;
+
+      box-shadow: 0 6px 18px -16px rgba(59, 42, 32, 0.5);
+    }
+
+    .category:nth-child(2) {
+      transform: translateY(8px);
+    }
+
+    .category:hover {
+      transform: translateY(-6px);
+
+      box-shadow: var(--shadow);
+    }
+
+    .category:nth-child(2):hover {
+      transform: translateY(2px);
+    }
+
+    /* CATEGORY IMAGE */
+
+    .category-image {
+      width: 100%;
+      height: 210px;
+
+      overflow: hidden;
+
+      background: #ead6b9;
+    }
+
+    .category-image img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      display: block;
+
+      transition: transform 0.5s ease;
+    }
+
+    .category:hover .category-image img {
+      transform: scale(1.07);
+    }
+
+    .category-content {
+      padding: 21px;
+    }
+
+    .category h3 {
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size: 23px;
+
+      margin-bottom: 5px;
+    }
+
+    .category p {
+      color: var(--ink-soft);
+
+      font-size: 13px;
+    }
+
+    .category a {
+      display: inline-block;
+
+      margin-top: 14px;
+
+      color: var(--brick);
+
+      font-size: 12px;
+
+      font-weight: bold;
+    }
+
+    .category a:hover {
+      text-decoration: underline;
+    }
+
+
+
+    .why {
+      background: var(--pine);
+
+      color: white;
+
+      padding: 70px 32px;
+    }
+
+    .why-inner {
+      max-width: 1050px;
+
+      margin: auto;
+
+      text-align: center;
+    }
+
+    .why .eyebrow {
+      color: #e8d5bb;
+    }
+
+    .why h2 {
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size: 40px;
+
+      margin-bottom: 12px;
+    }
+
+    .why-description {
+      max-width: 650px;
+
+      margin: auto;
+
+      color: #e3eadf;
+
+      font-size: 14px;
+    }
+
+    /* FEATURES */
+
+    .features {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 20px;
+
+      margin-top: 35px;
+    }
+
+    .feature {
+      border: 1px solid rgba(255,255,255,.2);
+
+      padding: 25px 18px;
+
+      background: rgba(255,255,255,.06);
+
+      transition: 0.2s ease;
+    }
+
+    .feature:hover {
+      background: rgba(255,255,255,.11);
+
+      transform: translateY(-4px);
+    }
+
+    .feature-icon {
+      font-size: 30px;
+
+      margin-bottom: 8px;
+    }
+
+    .feature strong {
+      display: block;
+
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size: 20px;
+
+      margin-bottom: 6px;
+    }
+
+    .feature span {
+      color: #e3eadf;
+
+      font-size: 12px;
+    }
+
+    .cta {
+      max-width: 900px;
+
+      margin: 65px auto 75px;
+
+      padding: 50px 30px;
+
+      text-align: center;
+
+      background: var(--card);
+
+      border: 1px dashed var(--line);
+
+      position: relative;
+    }
+
+    .cta::before {
+      content: "";
+
+      position: absolute;
+
+      top: -7px;
+
+      left: 50%;
+
+      width: 12px;
+      height: 12px;
+
+      transform: translateX(-50%);
+
+      background: var(--paper);
+
+      border: 1px solid var(--line);
+
+      border-radius: 50%;
+    }
+
+    .cta h2 {
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size: 36px;
+
+      margin-bottom: 8px;
+    }
+
+    .cta p {
+      color: var(--ink-soft);
+
+      font-size: 14px;
+
+      margin-bottom: 22px;
+    }
+
+
+    footer {
+      background-color: var(--brick);
+
+      color: var(--card);
+
+      text-align: center;
+
+      padding: 23px 20px;
+    }
+
+    footer p {
+      margin: 0;
+
+      font-size: 12px;
+    }
+
+    footer .footer-sub {
+      margin-top: 4px;
+
+      opacity: 0.75;
+    }
+
+
+    @media (max-width: 850px) {
+
+      nav {
+        flex-direction: column;
+
+        gap: 12px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+
+        padding-top: 55px;
+      }
+
+      .hero-card {
+        max-width: 550px;
+
+        width: 100%;
+
+        margin: auto;
+      }
+
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .category:nth-child(2) {
+        transform: none;
+      }
+
+      .category:nth-child(2):hover {
+        transform: translateY(-6px);
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 550px) {
+
+      nav {
+        padding: 15px 15px;
+      }
+
+      .nav-links {
+        gap: 15px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+      }
+
+      .hero {
+        padding-left: 20px;
+
+        padding-right: 20px;
+      }
+
+      .section {
+        padding-left: 20px;
+
+        padding-right: 20px;
+      }
+
+      .hero h1 {
+        font-size: 50px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .section-heading h2,
+      .why h2,
+      .cta h2 {
+        font-size: 31px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <nav>
+    <a href="Ibe.html">Home</a>
+    <a href="DelaPena.html">About</a>
+    <a href="Lansangan.html">Contact Us</a>
+    <a href="Laoang.html">Log In</a>
+    <a href="Dolor.html">Dashboard</a>
+  </nav>
+
+  <section class="hero">
+
+    <div class="hero-text">
+
+      <div class="eyebrow">
+        Welcome to Kitchen Recipes
+      </div>
+
+      <h1>
+        Good food.<br>
+        <span>Simple recipes.</span>
+      </h1>
+
+      <p>
+        Discover delicious Filipino-inspired recipes, easy cooking
+        ideas, and comforting dishes made for everyday meals.
+        Find something worth cooking today.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="Dolor.html" class="btn btn-primary">
+          Explore Recipes
+        </a>
+
+        <a href="DelaPena.html" class="btn btn-secondary">
+          Learn More
+        </a>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="hero-card">
+
+      <div class="food-photo">
+        <img
+          src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=85"
+          alt="Delicious Filipino food"
+        >
+
+      </div>
+
+      <div class="recipe-note">
+
+        <small>
+          Featured Recipe
+        </small>
+
+        <h3>
+          Filipino Comfort Food
+        </h3>
+
+        <p>
+          Warm, delicious, and perfect for sharing.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="section">
+
+    <div class="section-heading">
+
+      <div class="eyebrow">
+        What's cooking?
+      </div>
+
+      <h2>
+        Find your next favorite
+      </h2>
+
+      <p>
+        Browse different types of recipes and choose a dish
+        that fits your mood, time, and cravings.
+      </p>
+
+    </div>
+
+
+    <div class="category-grid">
+
+      <article class="category">
+
+        <div class="category-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85"
+            alt="Main dish"
+          >
+
+        </div>
+
+        <div class="category-content">
+
+          <h3>
+            Main Dishes
+          </h3>
+
+          <p>
+            Hearty meals such as Adobong Manok, Kare-Kare,
+            and other Filipino favorites.
+          </p>
+
+          <a href="Dolor.html">
+            View recipes →
+          </a>
+
+        </div>
+
+      </article>
+
+      <article class="category">
+
+        <div class="category-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=900&q=85"
+            alt="Soup and stew"
+          >
+
+        </div>
+
+        <div class="category-content">
+
+          <h3>
+            Soups &amp; Stews
+          </h3>
+
+          <p>
+            Comforting dishes for rainy days, family dinners,
+            and whenever you need something warm.
+          </p>
+
+          <a href="Dolor.html">
+            View recipes →
+          </a>
+
+        </div>
+
+      </article>
+
+      <article class="category">
+
+        <div class="category-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=85"
+            alt="Dessert"
+          >
+
+        </div>
+
+        <div class="category-content">
+
+          <h3>
+            Desserts &amp; Merienda
+          </h3>
+
+          <p>
+            Sweet treats and light snacks including Leche Flan
+            and classic Filipino merienda.
+          </p>
+
+          <a href="Dolor.html">
+            View recipes →
+          </a>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
+
+  <section class="why">
+
+    <div class="why-inner">
+
+      <div class="eyebrow">
+        Kitchen Recipes
+      </div>
+
+      <h2>
+        Made for everyday cooking.
+      </h2>
+
+      <p class="why-description">
+        Keep your favorite dishes in one place and make cooking
+        easier, more organized, and more enjoyable.
+      </p>
+
+
+      <div class="features">
+
+
+        <div class="feature">
+
+          <div class="feature-icon">
+            🔎
+          </div>
+
+          <strong>
+            Easy to Explore
+          </strong>
+
+          <span>
+            Quickly browse recipes and discover dishes
+            for any occasion.
+          </span>
+
+        </div>
+
+
+        <div class="feature">
+
+          <div class="feature-icon">
+            🍛
+          </div>
+
+          <strong>
+            Filipino Favorites
+          </strong>
+
+          <span>
+            Enjoy familiar meals and comforting flavors
+            inspired by Filipino cuisine.
+          </span>
+
+        </div>
+
+
+        <div class="feature">
+
+          <div class="feature-icon">
+            ❤️
+          </div>
+
+          <strong>
+            Save Your Favorites
+          </strong>
+
+          <span>
+            Keep track of recipes you love and come back
+            to them anytime.
+          </span>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="cta">
+
+    <div class="eyebrow">
+      Ready to cook?
+    </div>
+
+    <h2>
+      Let's make something delicious.
+    </h2>
+
+    <p>
+      Explore the Kitchen Recipes dashboard and start
+      discovering dishes for your next meal.
+    </p>
+
+    <a href="Dolor.html" class="btn btn-primary">
+      Open Dashboard
+    </a>
+
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Kitchen Recipes. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
