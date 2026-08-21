@@ -1,11 +1,378 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+
+    <title>About | Kitchen Recipes</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #fffaf2;
+            color: #4a3b32;
+        }
+
+        nav {
+            background-color: #a3390b;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav a {
+            display: inline-block;
+            color: #fffaf2;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+            color: #ffd8c2;
+        }
+
+        .about-container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 70px 0;
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 65px;
+        }
+
+        .about-header h1 {
+            font-size: 44px;
+            margin-bottom: 12px;
+            color: #c1440e;
+        }
+
+        .about-header p {
+            font-family: Arial, sans-serif;
+            font-style: italic;
+            font-size: 18px;
+            color: #6e8347;
+            margin-bottom: 15px;
+        }
+
+        /* Small decorative line */
+        .about-header::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: #6e8347;
+            margin: 18px auto 0;
+            border-radius: 10px;
+        }
+
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-content h2 {
+            font-size: 28px;
+            margin-top: 45px;
+            margin-bottom: 15px;
+            color: #c1440e;
+        }
+
+        .about-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .about-content p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #4a3b32;
+        }
+
+        .values {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .value-card {
+            padding: 30px 25px;
+            background-color: #fbf3e7;
+            border: 1px solid #eadbca;
+            border-radius: 12px;
+            text-align: center;
+
+            box-shadow: 0 4px 12px rgba(74, 59, 50, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 18px rgba(74, 59, 50, 0.12);
+        }
+
+        .value-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #6e8347;
+        }
+
+        .value-card p {
+            margin-bottom: 0;
+            font-size: 15px;
+        }
+
+        .team {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .team-member {
+            padding: 25px 20px;
+            background-color: #fbf3e7;
+            border: 1px solid #eadbca;
+            border-radius: 12px;
+            text-align: center;
+
+            box-shadow: 0 4px 12px rgba(74, 59, 50, 0.08);
+
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 18px rgba(74, 59, 50, 0.12);
+        }
+
+        .team-member h3 {
+            font-size: 18px;
+            margin-bottom: 7px;
+            color: #6e8347;
+        }
+
+        .team-member p {
+            margin-bottom: 0;
+            font-size: 14px;
+            color: #6a5a50;
+        }
+
+        /* Team Member Initials */
+        .team-icon {
+            width: 55px;
+            height: 55px;
+            margin: 0 auto 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background-color: #6e8347;
+            color: #fffaf2;
+
+            border-radius: 50%;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #a3390b;
+            color: #fffaf2;
+            text-align: center;
+            padding: 20px 0;
+            width: 100%;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 800px) {
+
+            .about-container {
+                width: 88%;
+                padding: 50px 0;
+            }
+
+            .about-header h1 {
+                font-size: 36px;
+            }
+
+            .values {
+                grid-template-columns: 1fr;
+            }
+
+            .team {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media (max-width: 500px) {
+
+            .about-header h1 {
+                font-size: 30px;
+            }
+
+            .about-header p {
+                font-size: 16px;
+            }
+
+            .about-content h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    
+
+    <body>
+
+    <nav>
+        <a href="Ibe.html">Home</a>
+        <a href="DelaPena.html">About</a>
+        <a href="Lansangan.html">Contact Us</a>
+        <a href="Laoang.html">Log In</a>
+        <a href="Dolor.html">Dashboard</a>
+    </nav>
+
+    <main class="about-container">
+
+        <!-- Page Header -->
+        <header class="about-header">
+            <h1>About Kitchen Recipes</h1>
+
+            <p>
+                Where Pinoy cooking and cravings collide.
+            </p>
+        </header>
+
+
+        <!-- Content -->
+        <section class="about-content">
+
+            <h2>Who We Are</h2>
+
+            <p>
+                Kitchen Recipes is a recipe website created for people
+                who love discovering and preparing delicious meals.
+                We bring together simple, flavorful, and
+                easy-to-follow recipes that anyone can enjoy. Mabuhay ang lutong Pinoy!
+            </p>
+
+            <h2>Our Purpose</h2>
+
+            <p>
+                Our goal is to make cooking more accessible and enjoyable.
+                Whether you're a beginner learning how to cook or someone
+                who simply wants to try something new, Kitchen Recipes provides
+                recipes that can inspire your next meal.
+            </p>
+
+
+            <!-- What You'll Find Here -->
+            <h2>What You'll Find Here</h2>
+
+            <div class="values">
+
+                <div class="value-card">
+                    <h3>Homemade Recipes</h3>
+
+                    <p>
+                        Simple instructions that are easy to understand
+                        and follow.
+                    </p>
+                </div>
+
+
+                <div class="value-card">
+                    <h3>Variety & Flavor</h3>
+
+                    <p>
+                        Explore different dishes, ingredients, and
+                        flavors for every craving.
+                    </p>
+                </div>
+
+
+                <div class="value-card">
+                    <h3>Made with Love</h3>
+
+                    <p>
+                        Recipes designed to make cooking a fun and
+                        enjoyable experience.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- Meet Our Team -->
+            <h2>Meet Our Team</h2>
+
+            <div class="team">
+
+                <div class="team-member">
+                    <div class="team-icon">JL</div>
+                    <h3>John Lloyd Laoang</h3>
+                    <p>Web Developer</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-icon">KI</div>
+                    <h3>Kyle Zherwin Ibe</h3>
+                    <p>Web Developer</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-icon">KD</div>
+                    <h3>Karl Andrie Dolor</h3>
+                    <p>Web Developer</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-icon">CD</div>
+                    <h3>Chinee Dela Peña</h3>
+                    <p>Web Developer</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-icon">CN</div>
+                    <h3>Cristal Jade Nuqui</h3>
+                    <p>Web Developer</p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-icon">KL</div>
+                    <h3>Kenneth Lansangan</h3>
+                    <p>Web Developer</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        </main>
+
+    <footer>
+        <p>&copy; 2026 Kitchen Recipes. All Rights Reserved.</p>
+    </footer>
+
 </body>
+
 </html>
