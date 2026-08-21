@@ -23,12 +23,31 @@
       }
 
       .login-form {
+        position: relative;
         background-color: #fffaf2;
         width: 360px;
         padding: 40px 36px;
         border-radius: 18px;
         border: 1px solid #e6d8c6;
         text-align: center;
+      }
+
+      .back{
+        position: fixed;
+        top: 24px;
+        left: 24px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 700;
+        color: #7a6a5c;
+        text-decoration: none;
+      }
+
+      .back:hover {
+        color: #a3390b;
+        text-decoration: underline;
       }
 
       .login-header {
@@ -182,6 +201,8 @@
     </style>
   </head>
   <body>
+    <a href="Ibe.html" class="back">Back to Home</a>
+
     <form action="" method="POST" class="login-form">
       <div class="login-header">
         <span class="eyebrow">Kitchen Recipes</span>
