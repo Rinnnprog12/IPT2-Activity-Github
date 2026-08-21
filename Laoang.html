@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Kitchen Recipes</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fbf3e7;
+        font-family: Arial, sans-serif;
+        color: #96857b;
+        padding: 24px;
+      }
+
+      .login-form {
+        position: relative;
+        background-color: #fffaf2;
+        width: 360px;
+        padding: 40px 36px;
+        border-radius: 18px;
+        border: 1px solid #e6d8c6;
+        text-align: center;
+      }
+
+      .back{
+        position: fixed;
+        top: 24px;
+        left: 24px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 700;
+        color: #7a6a5c;
+        text-decoration: none;
+      }
+
+      .back:hover {
+        color: #a3390b;
+        text-decoration: underline;
+      }
+
+      .login-header {
+        margin-bottom: 28px;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #52734d;
+        margin-bottom: 10px;
+      }
+
+      h1 {
+        font-family: Arial, "Times New Roman", serif;
+        font-weight: 700;
+        font-size: 30px;
+        margin: 0 0 8px;
+        color: #a3390b;
+      }
+
+      .subtitle {
+        margin: 0;
+        font-size: 14px;
+        color: #7a6a5c;
+        font-weight: 600;
+      }
+
+      .field {
+        text-align: left;
+        margin-bottom: 16px;
+      }
+
+      label {
+        display: block;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        color: #7a6a5c;
+        margin-bottom: 6px;
+      }
+
+      input {
+        display: block;
+        width: 100%;
+        padding: 11px 14px;
+        border: 1.5px solid #e6d8c6;
+        border-radius: 8px;
+        background-color: #ffffff;
+        font-size: 14px;
+        font-family: inherit;
+        color: #3b2a20;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      }
+
+      input::placeholder {
+        color: #b8a998;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #c1440e;
+        box-shadow: 0 0 0 3px rgba(193, 68, 14, 0.15);
+      }
+
+      .row-between {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 4px 0 20px;
+        font-size: 13px;
+      }
+
+      .remember {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #7a6a5c;
+        font-weight: 600;
+      }
+
+      .remember input {
+        accent-color: #c1440e;
+        width: 15px;
+        height: 15px;
+      }
+
+      .forgot-link {
+        color: #a3390b;
+        text-decoration: none;
+      }
+
+      .forgot-link:hover {
+        text-decoration: underline;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        background-color: #c1440e;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #a3390b;
+      }
+
+      button:active {
+        transform: translateY(1px);
+      }
+
+      .divider {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 22px 0;
+        color: #7a6a5c;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .signup {
+        font-size: 14px;
+        color: #7a6a5c;
+        margin: 0;
+        margin-top: 20px;
+      }
+
+      .signup a {
+        color: #52734d;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      @media (max-width: 420px) {
+        .login-form {
+          padding: 32px 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="Ibe.html" class="back">Back to Home</a>
+
+    <form action="" method="POST" class="login-form">
+      <div class="login-header">
+        <span class="eyebrow">Kitchen Recipes</span>
+        <h1>Welcome!</h1>
+        <p class="subtitle">Please Log in to continue</p>
+      </div>
+
+      <div class="field">
+        <label for="username">Username or Email</label>
+        <input type="text" id="username" name="username" placeholder="Enter username or email" required />
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required />
+      </div>
+
+      <div class="row-between">
+        <a href="#" class="forgot-link">Forgot password?</a>
+      </div>
+
+      <button type="submit">Login</button>
+
+      
+
+      <p class="signup">Don't have an account? <a href="#">Sign up</a></p>
+    </form>
+  </body>
+  </html>
